@@ -1,0 +1,50 @@
+import java.util.Scanner; 
+public class PersonalProgrammingTask { 
+
+  //Name: Vriti Dahiya 
+  /*Purpose: To write a program to create a name of a soccer club using the user’s 
+             favourite soccer player, the three letter code of the player's birth city, 
+             along with a personalized number. This club’s name must be approved by the FIFA 
+             Community, therefore should only end with a '-', followed by a blank character. */ 
+
+public static void main(String[] args) { 
+Scanner input = new Scanner (System.in); 
+
+//Input: Collect the data 
+  System.out.println ("Enter the first name of your favourite player (atleast 3 characters): "); String firstNameOfPlayer = input.next(); 
+  System.out.println ("Enter the 3 letter code for the city your player was born in: "); 
+  String acronymForCity = input.next(); 
+  System.out.println ("Enter the player's jersey number using two digits: "); 
+  String jerseyNumber = input.next(); 
+  System.out.println ("\n"); 
+  System.out.println ("*************************************************************\n"); 
+
+//Process the data 
+  String firstLetterOfPlayerUppercase = firstNameOfPlayer.substring(0,1).toUpperCase(); String str1 = firstNameOfPlayer.substring(0,3).toLowerCase();
+  String restOfPlayerName = str1.substring(1); 
+  String cityCodeLetters = acronymForCity.substring(0,3); 
+  String blankJerseyNumber = jerseyNumber.replaceFirst(jerseyNumber.substring(0,2), ""); String str2 = firstLetterOfPlayerUppercase+restOfPlayerName; 
+  String str3 = str2+cityCodeLetters; 
+  
+  String str4 = str3+blankJerseyNumber; 
+  int numChars = str1.length(); 
+  String blankSpace = str1.replaceAll(str1.substring(numChars-3), ""); 
+  String blankSpace2 = ""; 
+  int lastCharacterOfClubName = firstNameOfPlayer.indexOf("a"); 
+  String str5 = str4+lastCharacterOfClubName; 
+  String restOfNameLowercase = str5.substring(1,7).toLowerCase(); 
+  String finalClubName = firstLetterOfPlayerUppercase+restOfNameLowercase; 
+
+//FIFA Guidelines Setup 
+  boolean fifaGuidelines = (finalClubName.endsWith("-")); 
+  boolean fifaGuidelines2 =(blankSpace.equals(finalClubName.substring(7))); 
+
+//Output the Soccer Club Name 
+  System.out.println ("Your generated club name is " +finalClubName+ "." +blankSpace); 
+  //Check to see if club name is true under the FIFA Guidelines 
+  System.out.println (finalClubName+ " is " +fifaGuidelines+ " according to the naming conventions of FIFA's Guidelines."); 
+  System.out.println (finalClubName+ " is " +fifaGuidelines2+ " according to the last character conventions of FIFA's Guidelines."); 
+
+
+    }//main 
+}//PersonalProgrammingTask
